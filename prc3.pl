@@ -3,13 +3,9 @@
 use strict;
 use warnings;
 use Web::Query;
-use IO::Prompt::Tiny 'prompt';
-use IO::All;
-use AnyEvent;
-use AnyEvent::HTTP;
-use DDP;
 use Acme::CPANAuthors;
-use Encode 'decode_utf8', 'encode_utf8';
+use Acme::CPANAuthors::Booking;
+use Encode 'encode_utf8';
 
 local $| = 1;
 
@@ -28,9 +24,9 @@ wq("http://rawgit.com/CPAN-PRC/resources/master/january.html")
         }
     } );
 
-foreach my $id ( keys %assignments ) {
+foreach my $id ( sort keys %assignments ) {
     my $releases = $assignments{$id};
     print encode_utf8($authors->name($id)), ":\n";
-    printf "\t%s assigned with %s\n", decode_utf8($_->[0]), decode_utf8($_->[1])
+    printf "\t%s assigned with %s\n", $_->[0], $_->[1]
         for @{$releases};
 }

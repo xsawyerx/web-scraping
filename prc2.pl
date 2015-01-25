@@ -3,11 +3,6 @@
 use strict;
 use warnings;
 use Web::Query;
-use IO::Prompt::Tiny 'prompt';
-use IO::All;
-use AnyEvent;
-use AnyEvent::HTTP;
-use DDP;
 use Acme::CPANAuthors;
 
 local $| = 1;
