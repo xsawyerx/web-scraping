@@ -14,9 +14,9 @@ wq("http://schema.org/$entity")
     ->find('table.definition-table > tbody.supertype > tr')
     ->each( sub {
         my ( $idx, $elem ) = @_;
-        my $property = wq($_)->find('th.prop-nam > code > a')->text;
+        my $property = $_->find('th.prop-nam > code > a')->text;
         my @types    = map $_->text,
-                       wq($_)->find('td.prop-ect > a')->each(sub{1});
+                       $_->find('td.prop-ect > a')->each(sub{1});
 
         print "Property: $property\n";
         print "Types: ", join( ', ', @types ), "\n";

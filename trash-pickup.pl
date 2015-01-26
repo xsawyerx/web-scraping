@@ -19,9 +19,9 @@ wq("http://www.mijnafvalwijzer.nl/nl/$post/$house/")
 
         printf "%s* %s:\n", $p_year++ ? '' : "Year: $year\n\n", ucfirst $month;
 
-        wq($_)->find('div.column > p')->each( sub {
+        $_->find('div.column > p')->each( sub {
             my ( $day_name, $day_num ) = split ' ', $_->text;
-            my $type = wq($_)->find('span.afvaldescr')->text;
+            my $type = $_->find('span.afvaldescr')->text;
             print "\t> $day_num (@{[ucfirst $day_name]}): $type\n";
         });
 

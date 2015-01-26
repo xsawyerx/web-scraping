@@ -12,7 +12,7 @@ wq('http://thisiscriminal.com')
     ->find('main#main > article.post')
     ->each( sub {
         my ($count, $post) = @_;
-        my $hdr   = wq($post)->find('header.entry-header > h1 > a');
+        my $hdr   = $post->find('header.entry-header > h1 > a');
         my $title = $hdr->text =~ s/\N{RIGHT SINGLE QUOTATION MARK}/'/rg;
         my $link  = $hdr->attr('href');
 
@@ -29,12 +29,10 @@ wq('http://thisiscriminal.com')
             return;
         }
 
-        my $episode_link = wq($post)
-                               ->find('div.entry-content')
-                               ->find('iframe')->attr('src');
+        my $episode_link = $post->find('div.entry-content')
+                                ->find('iframe')->attr('src');
 
-        my $widget_js_link = wq($episode_link)
-                                 ->find('script')->first->attr('src');
+        my $widget_js_link = $episode_link->find('script')->first->attr('src');
 
         my $js           < io("https://w.soundcloud.com$widget_js_link");
         my ($client_id)  = $js =~ /production\:"([0-9a-f]+)"/;

@@ -9,7 +9,7 @@ local $| = 1;
 wq("http://rawgit.com/CPAN-PRC/resources/master/january.html")
     ->find('tbody > tr')
     ->each( sub {
-        my $release = wq($_)->find('td > a')->map( sub { $_->text } );
+        my $release = $_->find('td > a')->map( sub { $_->text } );
 
         $release->[2] eq 'XSAWYERX' || $release->[3] =~ /^xsawyerx/
             or return;
