@@ -6,7 +6,7 @@ use Web::Query;
 
 local $| = 1;
 
-wq("http://rawgit.com/CPAN-PRC/resources/master/january.html")
+wq('http://cpan-prc.org/january.html')
     ->find('tbody > tr')
     ->each( sub {
         my $release = $_->find('td > a')->map( sub { $_->text } );

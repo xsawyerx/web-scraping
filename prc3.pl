@@ -12,7 +12,7 @@ local $| = 1;
 my $authors = Acme::CPANAuthors->new('Booking');
 my @authors = $authors->id;
 my %assignments;
-wq("http://rawgit.com/CPAN-PRC/resources/master/january.html")
+wq('http://cpan-prc.org/january.html')
     ->find('tbody > tr')
     ->each( sub {
         my $release = $_->find('td > a')->map( sub { $_->text } );
