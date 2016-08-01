@@ -1,6 +1,9 @@
 # Sawyer's web scraping scripts
 
-I started doing web scraping again.
+Some of these web scraping scripts were part of a talk I gave at the
+AmsterdamX Perl Mongers group (AmsterdamX.pm).
 
-Most of these scripts were on my web scraping talk given at AmsterdamX.pm
-in January.
+Most of these scripts are in violation of the websites' Terms of Use
+conditions. They should only be used for educational purposes.
+
+In essence, don't be a dick.
