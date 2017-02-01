@@ -15,11 +15,11 @@ my $house =    prompt( 'House no.:',        1 );
 wq("http://www.mijnafvalwijzer.nl/nl/$post/$house/")
     ->find('div.ophaaldagen > div')
     ->each( sub {
-        my ( $month, $year ) = split '-', $_->attr('id');
+        my ( $month, $year ) = split /-/xms, $_->attr('id');
 
         printf "%s* %s:\n", $p_year++ ? '' : "Year: $year\n\n", ucfirst $month;
 
-        $_->find('div.column > p')->each( sub {
+        $_->find('div.column p')->each( sub {
             my ( $day_name, $day_num ) = split ' ', $_->text;
             my $type = $_->find('span.afvaldescr')->text;
             print "\t> $day_num (@{[ucfirst $day_name]}): $type\n";
